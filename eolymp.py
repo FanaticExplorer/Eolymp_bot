@@ -55,8 +55,13 @@ class parser():
         if 'Зараховано' in self.last_problem_state:
              return f'''Последняя задача "{self.last_problem_name}" пройдена на 100%'''
         elif 'Частково зараховано' in self.last_problem_state:
-            self.last_problem_percent = int((self.last_problem_state.split()[-1])[:-1])
-            return f'''Последняя задача "{self.last_problem_name}" пройдена на {self.last_problem_percent}%'''
+            if '%' in self.last_problem_state:
+                self.last_problem_percent = int((self.last_problem_state.split()[-1])[:-1])
+                return f'''Последняя задача "{self.last_problem_name}" пройдена на {self.last_problem_percent}%'''
+            else:
+                return f'''Последняя задача "{self.last_problem_name}" пройдена на 0%'''
+        elif 'Помилка компіляції' in self.last_problem_state:
+            return f'''Последняя задача "{self.last_problem_name}" была не пройдена из-за ошибки компиляции'''
         else:
             return 'Произошли технические шоколадки при поиске последнего решения'
 
