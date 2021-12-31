@@ -30,7 +30,7 @@ async def get_info(ctx, username):
     embed.set_thumbnail(url=user.get_photo_link())
     embed.add_field(name = "Ранг", value=user.get_rating(), inline = False)
     embed.add_field(name = "Решенные задачи", value = user.get_solved(), inline = True)
-    embed.add_field(name = "Отправки", value = user.get_submits(), inline = True)
+    embed.add_field(name = "Отправки", value = user.get_total_submissions(), inline = True)
     embed.add_field(name = "Засчитанные решения", value = user.get_submits(), inline = True)
     embed.add_field(name="Последняя задача", value=user.get_last(), inline=False)
     embed.set_footer(text="Спросил: {}".format(ctx.author.display_name))
