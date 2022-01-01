@@ -8,7 +8,11 @@ description = '''I will give any information about any profile on Eolymp.
 My github: https://github.com/FanaticExplorer/Eolymp_bot'''
 
 bot = commands.Bot(command_prefix='>', description=description)
-bot_token=os.environ.get('bot_token')
+place_of_launch=os.environ.get('place')
+if place_of_launch=='heroku':
+    bot_token=os.environ.get('bot_token')
+elif place_of_launch=='local':
+    bot_token=os.environ.get('test_bot_token')
 
 @bot.event
 async def on_ready():
